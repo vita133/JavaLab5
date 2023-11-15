@@ -7,7 +7,21 @@ import org.example.classes.Text;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code SentencesCounter} class provides methods for counting occurrences of specific words
+ * in a given text.
+ */
 public class SentencesCounter {
+
+    /**
+     * Counts the occurrences of specified words in the given text.
+     * Displays the input text, processes it to count occurrences of each specified word,
+     * and prints the results.
+     *
+     * @param text          the input text
+     * @param wordsToCount  an array of words to count occurrences
+     * @throws IllegalArgumentException if the input text or wordsToCount is null
+     */
     public static void countSentencesContainsWords(String text, String[] wordsToCount) {
         if (text == null || wordsToCount == null) {
             throw new IllegalArgumentException("Вхідні дані не можуть бути null.");
@@ -42,6 +56,13 @@ public class SentencesCounter {
         printResults(wordCountMap);
     }
 
+    /**
+     * Compares two words for equality, ignoring case.
+     *
+     * @param word1 the first word
+     * @param word2 the second word
+     * @return true if the words are equal, ignoring case; false otherwise
+     */
     private static boolean areWordsEqual(Word word1, Word word2) {
         Letter[] letters1 = word1.letters;
         Letter[] letters2 = word2.letters;
@@ -59,6 +80,11 @@ public class SentencesCounter {
         return true;
     }
 
+    /**
+     * Prints the results of word occurrences in sentences.
+     *
+     * @param wordCountMap a map containing words and their occurrences
+     */
     private static void printResults(Map<Word, Integer> wordCountMap) {
         for (Map.Entry<Word, Integer> entry : wordCountMap.entrySet()) {
             System.out.println("Слово '" + entry.getKey() + "' міститься в " + entry.getValue() + " реченнях.");
